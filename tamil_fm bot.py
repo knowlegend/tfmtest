@@ -57,11 +57,12 @@ def veg_price():
     
     bot.send_message(chat_id="@test_42", text=dfstr)   
 
+def job():
+    print("I'm working...")
 
-
-schedule.every(1).minutes.do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
-schedule.every(2).minutes.do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
-
+#schedule.every(1).minutes.do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
+#schedule.every(2).minutes.do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
+schedule.every(1).minutes.do(job)
 
 
 while True:

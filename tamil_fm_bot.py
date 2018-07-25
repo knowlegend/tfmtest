@@ -57,11 +57,11 @@ def veg_price():
     
     bot.send_message(chat_id="@test_42", text=dfstr)   
 
-schedule.every().day.at("08:11").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
-schedule.every().day.at("08:12").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
-schedule.every().day.at("08:14").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy
-schedule.every().day.at("08:16").do(tamil_news,pudhucherry_id,pudhucherry_filename)  #Evening news Pudhucherry
-schedule.every().day.at("08:19").do(tamil_news,chennai_evening_id,chennai_evening)  #Evening news chennai
+schedule.every().day.at("01:00").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
+schedule.every().day.at("01:05").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
+schedule.every().day.at("08:25").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy
+schedule.every().day.at("12:49").do(tamil_news,pudhucherry_id,pudhucherry_filename)  #Evening news Pudhucherry
+schedule.every().day.at("13:09").do(tamil_news,chennai_evening_id,chennai_evening)  #Evening news chennai
 
 
 while True:

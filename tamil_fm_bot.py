@@ -57,7 +57,7 @@ def veg_price():
     
     bot.send_message(chat_id="@test_42", text=dfstr)   
 
-schedule.every(1).minutes.do(veg_price)
+#schedule.every(1).minutes.do(veg_price)
 schedule.every().day.at("01:00").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
 schedule.every().day.at("01:05").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
 schedule.every().day.at("08:25").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy

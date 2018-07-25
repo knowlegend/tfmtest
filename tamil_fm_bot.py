@@ -8,9 +8,33 @@ import os
 import wget
 import re
 import pandas as pd
+from telegram.ext import Updater
+updater = Updater(token='579089832:AAFcH3QPjgtVfzPuc-2563hMiMN_izI7aLA')
+dispatcher = updater.dispatcher
+
+bot = telegram.Bot(token='579089832:AAFcH3QPjgtVfzPuc-2563hMiMN_izI7aLA')
+
+def echo(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text='Follow @tamilfm,I will be posting contents there , Thankyou :)')
+
+from telegram.ext import MessageHandler, Filters
+echo_handler = MessageHandler(Filters.text, echo)
+dispatcher.add_handler(echo_handler)
+    
 
 
-bot = telegram.Bot(token="579089832:AAFcH3QPjgtVfzPuc-2563hMiMN_izI7aLA")
+def daily_calendar():
+    
+    calv=str(datetime.date.today())
+    cal_var=calv[-2:]+calv[-5:-3]+calv[:4]
+    bot.send_photo(chat_id="@tamilfm", photo='http://ilearntamil.com/2018/'+cal_var+'.gif')
+    
+
+def gold_rate():
+    gold=pd.read_html('http://www.sify.com/finance/gold-rates-in-chennai/')
+    gold_string=gold[0].to_string(index=False,col_space=8)
+    gold_string=gold_string.replace('Gram 22 Carat Gold 24 Carat Gold','Gram \t\t\t\t 22 Carat Gold \t\t\t\t 24 Carat Gold')
+    bot.send_message(chat_id="@tamilfm",text=gold_string)
 
 
 def tamil_news(area_id,op_filename):
@@ -31,7 +55,7 @@ def tamil_news(area_id,op_filename):
         os.remove(op_filename)
     else:
         filename = wget.download(download_link,out=op_filename)
-        bot.send_audio(chat_id="@test_42", audio=open(op_filename, 'rb'),
+        bot.send_audio(chat_id="@tamilfm", audio=open(op_filename, 'rb'),
                title='Tamil FM News',caption=op_filename.split('.')[0],performer='All India Radio')
 
 chennai_mor_id="Chennai-Tamil-0645"
@@ -55,15 +79,13 @@ def veg_price():
     dfstr=dfstr.replace('NamePrice(Rs)','Name \t\t\t\t\t\t\t\t\t\t\t Price(Rs.)')
     dfstr='🥦🍆🥕 Chennai Vegetable Prices  🥦🍆🥕   \n'+dfstr
     
-    bot.send_message(chat_id="@test_42", text=dfstr)   
+    bot.send_message(chat_id="@tamilfm", text=dfstr)   
 
-def stataa():
-    bot.send_message(chat_id="@test_42",text="Bot is running")
-    
-    
-schedule.every(2).hour.do(stataa)
+
+schedule.every().day.at("12:56").do(daily_calendar)  #Daily Calendar
 schedule.every().day.at("01:00").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
 schedule.every().day.at("01:05").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
+schedule.every().day.at("01:45").do(gold_rate)  #Gold Rate
 schedule.every().day.at("08:25").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy
 schedule.every().day.at("12:49").do(tamil_news,pudhucherry_id,pudhucherry_filename)  #Evening news Pudhucherry
 schedule.every().day.at("13:09").do(tamil_news,chennai_evening_id,chennai_evening)  #Evening news chennai
@@ -72,6 +94,7 @@ schedule.every().day.at("13:09").do(tamil_news,chennai_evening_id,chennai_evenin
 while True:
     try:
         schedule.run_pending()
+        updater.start_polling()
     except Exception:
         time.sleep(4) # wait 4 seconds
 

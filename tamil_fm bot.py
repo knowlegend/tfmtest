@@ -44,25 +44,26 @@ trichy_filename="Trichy FM News.mp3"
 pudhucherry_filename="Pudhucherry FM News.mp3"
 
 
-def veg_price():
+# def veg_price():
     
-    veg_url="https://www.livechennai.com/Vegetable_price_chennai.asp"
-    vg_price=pd.read_html(veg_url)
-    df=pd.DataFrame(vg_price[1])
-    df=df.loc[:,1:2]
-    dfstr=df.to_string(index=False,header=False)
-    dfstr=dfstr.replace(' ','')
-    dfstr=dfstr.replace('NamePrice(Rs)','Name \t\t\t\t\t\t\t\t\t\t\t Price(Rs.)')
-    dfstr='🥦🍆🥕 Chennai Vegetable Prices  🥦🍆🥕   \n'+dfstr
+#     veg_url="https://www.livechennai.com/Vegetable_price_chennai.asp"
+#     vg_price=pd.read_html(veg_url)
+#     df=pd.DataFrame(vg_price[1])
+#     df=df.loc[:,1:2]
+#     dfstr=df.to_string(index=False,header=False)
+#     dfstr=dfstr.replace(' ','')
+#     dfstr=dfstr.replace('NamePrice(Rs)','Name \t\t\t\t\t\t\t\t\t\t\t Price(Rs.)')
+#     dfstr='🥦🍆🥕 Chennai Vegetable Prices  🥦🍆🥕   \n'+dfstr
     
-    bot.send_message(chat_id="@test_42", text=dfstr)   
+#     bot.send_message(chat_id="@test_42", text=dfstr)   
 
 def job():
-    print("I'm working...")
+    print("I'm working... This is a test run")
+    bot.send_message(chat_id="@test_42", text='hi') 
 
 #schedule.every(1).minutes.do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
 #schedule.every(2).minutes.do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
-schedule.every(1).minutes.do(job)
+schedule.every(2).minutes.do(job)
 
 
 while True:

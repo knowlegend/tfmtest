@@ -84,8 +84,8 @@ def veg_price():
     bot.send_message(chat_id="@tamilfm", text=dfstr)   
 
 
-schedule.every().day.at("12:56").do(daily_calendar)  #Daily Calendar
-schedule.every().day.at("01:00").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
+schedule.every().day.at("01:00").do(daily_calendar)  #Daily Calendar
+schedule.every().day.at("01:15").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
 schedule.every().day.at("03:00").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai 6:45
 schedule.every().day.at("01:45").do(gold_rate)  #Gold Rate
 schedule.every().day.at("10:00").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy

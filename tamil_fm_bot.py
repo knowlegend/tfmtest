@@ -102,7 +102,7 @@ while True:
 
 
 #schedule.every().day.at("06:15").do(veg_price)  #Every morning 6:15 A.M  - Vegetable price
-#schedule.every().day.at("06:55").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai
-#schedule.every().day.at("13:51").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy
-#schedule.every().day.at("18:19").do(tamil_news,pudhucherry_id,pudhucherry_filename)  #Evening news Pudhucherry
-#schedule.every().day.at("18:39").do(tamil_news,chennai_evening_id,chennai_evening)  #Evening news chennai
+#schedule.every().day.at("06:55").do(tamil_news,chennai_mor_id,chennai_mor_filename)  #Morning news chennai : 6:45
+#schedule.every().day.at("13:51").do(tamil_news,trichy_id,trichy_filename)  #Afternoon News - Trichy : 13:45
+#schedule.every().day.at("18:19").do(tamil_news,pudhucherry_id,pudhucherry_filename)  #Evening news Pudhucherry : 18:10
+#schedule.every().day.at("18:39").do(tamil_news,chennai_evening_id,chennai_evening)  #Evening news chennai : 16:30
